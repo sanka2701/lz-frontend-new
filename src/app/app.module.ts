@@ -28,8 +28,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
     FormsModule,
+    MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,

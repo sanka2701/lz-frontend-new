@@ -1,25 +1,46 @@
 <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <!--<button mat-button disabled>-->
+      <!--<img class="png-icon"  src="../../../assets/DigiPub_logo_HighReso01.png"-->
+           <!--style="max-width:    36px; min-width: 36px;">-->
+    <!--</button>-->
 
-  <button mat-button routerLink="/">
-    <mat-icon>home</mat-icon>
-    {{title}}</button>
+    <button mat-raised-button color="primary">primary</button>
+    <button mat-raised-button color="accent">accent</button>
+    <button mat-raised-button color="warn">warn</button>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="fill-remaining-space"></span>
-  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-button routerLink="/products">Products</button>
-    <button mat-button routerLink="/dashboard">Dashboard</button>
-  </div>
-  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
-  </button>
+    <span>SiteName</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary">Menu01</button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>SubMenu01</span>
+      </button>
+      <button mat-menu-item>
+        <span>SubMenu02</span>
+      </button>
+      <button mat-menu-item>
+        <span>SubMenu03</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
 
 </mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item routerLink="/products">Products</button>
-  <button mat-menu-item routerLink="/dashboard">Dashboard</button>
-  <!--<button mat-menu-item>Help</button>-->
-</mat-menu>
+
+<mat-tab-group color="accent">
+  <mat-tab [label]="'home' | translate">
+    <h1>Some tab content</h1>
+    <p>...</p>
+  </mat-tab>
+  <mat-tab label="Two">
+    <h1>Some more tab content</h1>
+    <p>...</p>
+  </mat-tab>
+</mat-tab-group>
 
 <!--<header>-->
   <!--<nav>-->
