@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    {{title}}</button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/products">Products</button>
+    <button mat-button routerLink="/dashboard">Dashboard</button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/products">Products</button>
+  <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+  <!--<button mat-menu-item>Help</button>-->
+</mat-menu>
+
+<!--<header>-->
+  <!--<nav>-->
+    <!--<div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">-->
+      <!--<div fxFlex="20">-->
+        <!--<a mat-raised-button routerLink="/home">-->
+          <!--{{'home' | translate | uppercase}}-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div fxFlex="20">-->
+        <!--<a mat-raised-button routerLink="/events">-->
+          <!--{{'events' | translate | uppercase}}-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div fxFlex class="text-right">-->
+        <!--<button mat-icon-button [matMenuTriggerFor]="matmenu">-->
+          <!--<mat-icon>public</mat-icon>-->
+        <!--</button>-->
+        <!--<mat-menu #matmenu="matMenu">-->
+          <!--<button mat-menu-item (click)="changeLanguage('en')">-->
+            <!--<mat-icon>flag</mat-icon>-->
+            <!--<span>-->
+                <!--English-->
+            <!--</span>-->
+          <!--</button>-->
+          <!--<button mat-menu-item (click)="changeLanguage('sk')">-->
+            <!--<mat-icon>flag</mat-icon>-->
+            <!--<span>-->
+                <!--Slovensky-->
+            <!--</span>-->
+          <!--</button>-->
+          <!--<button mat-menu-item (click)="changeLanguage('pl')">-->
+            <!--<mat-icon>flag</mat-icon>-->
+            <!--<span>-->
+                <!--Polski-->
+            <!--</span>-->
+          <!--</button>-->
+        <!--</mat-menu>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</nav>-->
+<!--</header>-->
