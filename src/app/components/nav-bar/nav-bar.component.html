@@ -1,46 +1,32 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+    <button mat-raised-button color="primary" routerLink="/home">
+      {{'home' | translate}}
     </button>
-    <!--<button mat-button disabled>-->
-      <!--<img class="png-icon"  src="../../../assets/DigiPub_logo_HighReso01.png"-->
-           <!--style="max-width:    36px; min-width: 36px;">-->
-    <!--</button>-->
+    <button mat-raised-button color="accent" routerLink="/events">
+      {{'events' | translate}}
+    </button>
 
-    <button mat-raised-button color="primary">primary</button>
-    <button mat-raised-button color="accent">accent</button>
-    <button mat-raised-button color="warn">warn</button>
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="languageMenu">
+      {{currentLang | uppercase}}
+    </button>
 
-    <span>SiteName</span>
-    <span class="example-spacer"></span>
-    <button mat-raised-button color="primary">Menu01</button>
+    <span class="spacer"></span>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <span>SubMenu01</span>
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('en')">
+        <span>English</span>
       </button>
-      <button mat-menu-item>
-        <span>SubMenu02</span>
+      <button mat-menu-item (click)="changeLanguage('sk')">
+        <span>Slovensky</span>
       </button>
-      <button mat-menu-item>
-        <span>SubMenu03</span>
+      <button mat-menu-item (click)="changeLanguage('pl')">
+        <span>Polski</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>
-
 </mat-toolbar>
 
-<mat-tab-group color="accent">
-  <mat-tab [label]="'home' | translate">
-    <h1>Some tab content</h1>
-    <p>...</p>
-  </mat-tab>
-  <mat-tab label="Two">
-    <h1>Some more tab content</h1>
-    <p>...</p>
-  </mat-tab>
-</mat-tab-group>
 
 <!--<header>-->
   <!--<nav>-->

@@ -15,5 +15,6 @@ export class NavBarComponent {
 
   changeLanguage(language: string): void {
     this.translateService.use(language);
+    this.currentLang = language;
   }
 }
