@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { HttpLoaderFactory } from './app.translate.factory';
 import { MaterialModule } from './shared/material.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,11 +12,17 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventTopComponent } from './components/event-top/event-top.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {HttpTokenInterceptor} from "./shared/interceptors/http.token.interceptor";
+import {JwtService} from "./services/jwt.service";
+import { AuthComponent } from './components/auth/auth.component';
+import {UserService} from "./services/user.service";
+import {ApiService} from "./services/api.service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventTopComponent},
+  {path: 'auth', component: AuthComponent},
 ];
 
 @NgModule({
@@ -24,7 +30,8 @@ const appRoutes: Routes = [
     AppComponent,
     NavBarComponent,
     HomeComponent,
-    EventTopComponent
+    EventTopComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,12 @@ const appRoutes: Routes = [
     }),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    UserService,
+    JwtService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

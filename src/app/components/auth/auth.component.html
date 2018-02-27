@@ -1,0 +1,19 @@
+<form [formGroup]="authForm" #form="ngForm" (ngSubmit)="submitForm(authForm.value)">
+  <mat-input-container class="input-container">
+    <input matInput type="text"
+           placeholder="{{'username' | translate}}"
+           formControlName="username">
+  </mat-input-container>
+
+  <mat-input-container class="input-container">
+    <input matInput type="password"
+           placeholder="{{'password' | translate}}"
+           formControlName="password">
+  </mat-input-container>
+
+  <button mat-raised-button type="submit" [disabled]="!authForm.valid">
+    {{'create' | translate}}
+  </button>
+
+  <!--<div *ngIf="error">{{error | translate}}</div>-->
+</form>

@@ -1,4 +1,7 @@
 {
   "home": "Home",
-  "events": "Events"
+  "events": "Events",
+  "username" : "Username",
+  "password" : "Password",
+  "login" : "Login"
 }
