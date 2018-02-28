@@ -1,19 +1,55 @@
 <form [formGroup]="authForm" #form="ngForm" (ngSubmit)="submitForm(authForm.value)">
   <mat-input-container class="input-container">
     <input matInput type="text"
+           placeholder="{{'email' | translate}}"
+           formControlName="email">
+  </mat-input-container>
+
+  <mat-input-container class="input-container">
+    <input matInput type="text"
            placeholder="{{'username' | translate}}"
            formControlName="username">
   </mat-input-container>
 
-  <mat-input-container class="input-container">
-    <input matInput type="password"
-           placeholder="{{'password' | translate}}"
-           formControlName="password">
-  </mat-input-container>
+  <div formGroupName="passwords">
+    <mat-input-container class="input-container">
+      <input matInput type="text"
+             placeholder="{{'password' | translate}}"
+             formControlName="password">
+    </mat-input-container>
+
+    <mat-input-container class="input-container">
+      <input matInput type="text"
+             placeholder="{{'confirmPassword' | translate}}"
+             formControlName="confirmPassword">
+    </mat-input-container>
+  </div>
 
   <button mat-raised-button type="submit" [disabled]="!authForm.valid">
     {{'create' | translate}}
   </button>
+
+  <!--{{ getErrors() }}-->
+
+
+  <!--<div class="form-group row" formGroupName="passwords">-->
+    <!--<div class="form-group">-->
+      <!--<label for="password" class="control-label">Contraseña:</label>-->
+      <!--<input type="password" class="form-control" formControlName="password" title="Please enter your password">-->
+      <!--<p class="help-block" *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched">Debe ingresar una contraseña</p>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+      <!--<label for="confirmedPassword" class="control-label">Confirmar Contraseña:</label>-->
+      <!--<input type="password" class="form-control" formControlName="confirmedPassword"  title="Please re-enter your password">-->
+      <!--<p class="help-block" *ngIf="signUpForm.get('confirmedPassword').hasError('required') && signUpForm.get('confirmedPassword').touched">La confirmación de contraseña no puede estar vacía</p>-->
+      <!--<p class="help-block" *ngIf="signUpForm.get('confirmedPassword').hasError('passwordMismatch') && signUpForm.get('confirmedPassword').touched">Las contraseñas no coinciden</p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div *ngIf="authF">-->
+    <!--Nesedia Hesla-->
+  <!--</div>-->
 
   <!--<div *ngIf="error">{{error | translate}}</div>-->
 </form>

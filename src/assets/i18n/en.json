@@ -1,7 +1,9 @@
 {
   "home": "Home",
   "events": "Events",
+  "email" : "Email",
   "username" : "Username",
   "password" : "Password",
+  "confirmPassword" : "Confirm Password",
   "login" : "Login"
 }

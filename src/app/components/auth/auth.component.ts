@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {Errors} from "../../models/errors.model";
 import {User} from "../../models/user.model";
+import {PasswordValidation} from "../../utils/PasswordValidation";
 
 @Component({
   selector: 'app-auth',
@@ -18,6 +19,16 @@ export class AuthComponent implements OnInit {
   errors: Errors = {errors: {}};
   isSubmitting = false;
 
+  confirmPassword = new FormControl('', [
+    Validators.required,
+    PasswordValidation.matchPassword
+  ]);
+
+  password = new FormControl('', [
+    Validators.required,
+    PasswordValidation.matchPassword
+  ]);
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -25,9 +36,18 @@ export class AuthComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.authForm = this.formBuilder.group({
-      'username': ['', Validators.required],
-      'password': ['', Validators.required]
+      email   : [''],
+      username: ['', Validators.required],
+      passwords : this.formBuilder.group({
+          password : ['', Validators.required],
+          confirmPassword : ['', Validators.required]
+      }, {
+          validator: PasswordValidation.matchPassword
+      })
     });
+    // , {
+    //   validator: PasswordValidation.matchPassword
+    // });
   }
 
   ngOnInit() {
@@ -58,5 +78,9 @@ export class AuthComponent implements OnInit {
     //       this.isSubmitting = false;
     //     }
     //   );
+  }
+
+  getErrors() {
+    return JSON.stringify(this.authForm.controls);
   }
 }
