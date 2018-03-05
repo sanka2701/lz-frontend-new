@@ -5,5 +5,10 @@
   "username" : "Username",
   "password" : "Password",
   "confirmPassword" : "Confirm Password",
-  "login" : "Login"
+  "login" : "Login",
+  "register" : "Register",
+  "fieldRequired" : "This field is mandatory",
+  "passwordMismatch" : "Passwords do not match",
+  "emailFormatRequired" : "Email format is required: example@gmail.com",
+  "usernameTaken" : "This username is already taken"
 }

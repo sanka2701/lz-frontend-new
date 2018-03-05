@@ -1,0 +1,61 @@
+<form [formGroup]="authForm" #form="ngForm" (ngSubmit)="submitForm(authForm.value)">
+  <div fxLayout="column" class="login-box" >
+    <mat-input-container>
+      <input matInput
+             type="email"
+             placeholder="{{'email' | translate}}"
+             formControlName="email">
+      <mat-error *ngIf="authForm.get('email').hasError('email')">
+        {{ 'emailFormatRequired' | translate}}
+      </mat-error>
+    </mat-input-container>
+
+    <mat-input-container>
+      <input matInput
+             type="text"
+             placeholder="{{'username' | translate}}"
+             formControlName="username"
+             required>
+      <mat-error *ngIf="authForm.get('username').hasError('required')">
+        {{ 'fieldRequired' | translate}}
+      </mat-error>
+      <mat-error *ngIf="authForm.get('username').hasError('usernameTaken')">
+        {{ 'usernameTaken' | translate}}
+      </mat-error>
+    </mat-input-container>
+
+    <div fxLayout="column" formGroupName="passwords">
+      <mat-input-container>
+        <input matInput
+               type="text"
+               placeholder="{{'password' | translate}}"
+               formControlName="password"
+               required>
+        <mat-error *ngIf="authForm.get('passwords').get('password').hasError('required')">
+          {{ 'fieldRequired' | translate}}
+        </mat-error>
+      </mat-input-container>
+
+      <mat-input-container>
+        <input matInput
+               type="text"
+               placeholder="{{'confirmPassword' | translate}}"
+               formControlName="confirmPassword"
+               required
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="authForm.get('passwords').hasError('passwordMismatch')">
+          {{ 'passwordMismatch' | translate}}
+        </mat-error>
+        <mat-error *ngIf="authForm.get('passwords').get('confirmPassword').hasError('required')">
+          {{ 'fieldRequired' | translate}}
+        </mat-error>
+      </mat-input-container>
+    </div>
+
+    <button mat-raised-button
+            type="submit"
+            [disabled]="!authForm.valid">
+      {{'create' | translate}}
+    </button>
+  </div>
+</form>

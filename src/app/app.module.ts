@@ -12,17 +12,18 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventTopComponent } from './components/event-top/event-top.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {HttpTokenInterceptor} from "./shared/interceptors/http.token.interceptor";
-import {JwtService} from "./services/jwt.service";
-import { AuthComponent } from './components/auth/auth.component';
-import {UserService} from "./services/user.service";
-import {ApiService} from "./services/api.service";
+import {RegisterComponent} from './components/register/register.component';
+import {ApiService} from './services/api.service';
+import {UserService} from './services/user.service';
+import {HttpTokenInterceptor} from './shared/interceptors/http.token.interceptor';
+import {JwtService} from './services/jwt.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventTopComponent},
-  {path: 'auth', component: AuthComponent},
+  {path: 'login', component: RegisterComponent},
+  {path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     NavBarComponent,
     HomeComponent,
     EventTopComponent,
-    AuthComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
