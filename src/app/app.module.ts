@@ -17,12 +17,14 @@ import {ApiService} from './services/api.service';
 import {UserService} from './services/user.service';
 import {HttpTokenInterceptor} from './shared/interceptors/http.token.interceptor';
 import {JwtService} from './services/jwt.service';
+import {OverlayModule} from '@angular/cdk/overlay';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventTopComponent},
-  {path: 'login', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
 ];
 
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     NavBarComponent,
     HomeComponent,
     EventTopComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    OverlayModule,
     RouterModule.forRoot(appRoutes),
     TranslateModule.forRoot({
       loader: {

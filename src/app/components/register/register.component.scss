@@ -1,0 +1,21 @@
+.login-box {
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 4px 4px 18px #888888;
+  margin: 30px 5% 30px 5%;
+  padding: 5%;
+}
+
+.test {
+  width: 100%;
+  transition: all 0.5s;
+  display: flex;
+  padding: 10px 10px 10px 20px;
+
+  input {
+    flex-grow: 1;
+    border: 0;
+    font-size: 20px;
+    min-width: 100px;
+  }
+}

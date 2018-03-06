@@ -3,6 +3,7 @@ import {ErrorStateMatcher} from '@angular/material';
 import {UserService} from '../services/user.service';
 import {Constants} from './Constants';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 export class FormValidators {
   static matchPasswords(): ValidatorFn {

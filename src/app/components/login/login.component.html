@@ -1,0 +1,31 @@
+<form [formGroup]="loginForm" #form="ngForm" (ngSubmit)="attemptLogin(loginForm.value)">
+  <div fxLayout="column" class="login-box" >
+    <mat-input-container>
+      <input matInput
+             type="text"
+             placeholder="{{'username' | translate}}"
+             formControlName="username"
+             required>
+      <mat-error *ngIf="loginForm.get('username').hasError('required')">
+        {{ 'fieldRequired' | translate}}
+      </mat-error>
+    </mat-input-container>
+
+    <mat-input-container>
+      <input matInput
+             type="text"
+             placeholder="{{'password' | translate}}"
+             formControlName="password"
+             required>
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">
+        {{ 'fieldRequired' | translate}}
+      </mat-error>
+    </mat-input-container>
+
+    <button mat-raised-button
+            type="submit"
+            [disabled]="!loginForm.valid">
+      {{'login' | translate}}
+    </button>
+  </div>
+</form>

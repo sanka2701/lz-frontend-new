@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";*/
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import "./themes/black-theme";
+@import "./themes/light-theme";
+
+@import "./app/components/register/register.component.scss-theme";
+@import "./app/components/login/login.component.scss-theme";
+@import "./app/components/nav-bar/nav-bar.component.scss-theme";
+
+@mixin custom-components-theme($theme) {
+  @include anms-register-component-theme($theme);
+  @include anms-nav-bar-component-theme($theme);
+  @include anms-login-component-theme($theme);
+}
+
+.black-theme {
+  @include angular-material-theme($anms-black-theme);
+  @include custom-components-theme($anms-black-theme);
+}
+
+.light-theme {
+  @include angular-material-theme($anms-light-theme);
+  @include custom-components-theme($anms-light-theme);
+}

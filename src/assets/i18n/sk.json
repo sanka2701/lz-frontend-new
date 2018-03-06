@@ -1,4 +1,14 @@
 {
   "home": "Domov",
-  "events": "Udalosti"
+  "events": "Udalosti",
+  "email" : "Email",
+  "username" : "Užívateľské meno",
+  "password" : "Heslo",
+  "confirmPassword" : "Potvrdenie hesla",
+  "login" : "Prihlásiť",
+  "register" : "Registrovať",
+  "fieldRequired" : "Toto pole je povinné",
+  "passwordMismatch" : "Heslá sa nezhodujú",
+  "emailFormatRequired" : "Vyžaduje sa emailový formát: example@gmail.com",
+  "usernameTaken" : "Toto užívateľské meno sa už používa"
 }

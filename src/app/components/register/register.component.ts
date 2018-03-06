@@ -7,9 +7,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   authForm: FormGroup;
@@ -29,7 +29,7 @@ export class RegisterComponent {
   ) {
     this.authForm = this.formBuilder.group({
       email   : ['', FormValidators.email()],
-      username: ['', Validators.required/*, FormValidators.usernameNotTaken(this.userService)*/],
+      username: ['', Validators.required, FormValidators.usernameNotTaken(this.userService)],
       passwords : this.formBuilder.group({
           password : ['', Validators.required],
           confirmPassword : ['', [Validators.required]]

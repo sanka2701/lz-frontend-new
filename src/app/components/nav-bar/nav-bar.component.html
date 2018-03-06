@@ -1,76 +1,35 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-raised-button color="primary" routerLink="/home">
-      {{'home' | translate}}
-    </button>
-    <button mat-raised-button color="accent" routerLink="/events">
-      {{'events' | translate}}
-    </button>
-    <button mat-raised-button color="primary" routerLink="/login">
-      {{'login' | translate}}
-    </button>
-    <button mat-raised-button color="primary" routerLink="/register">
-      {{'register' | translate}}
-    </button>
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="languageMenu">
-      {{currentLang | uppercase}}
-    </button>
-
-    <span class="spacer"></span>
-
-    <mat-menu #languageMenu="matMenu">
-      <button mat-menu-item (click)="changeLanguage('en')">
-        <span>English</span>
+<div class="fixed-header">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-raised-button class="nav-button" routerLink="/home" routerLinkActive="active">
+        {{'home' | translate}}
       </button>
-      <button mat-menu-item (click)="changeLanguage('sk')">
-        <span>Slovensky</span>
+      <button mat-raised-button class="nav-button test" routerLink="/events" routerLinkActive="active">
+        {{'events' | translate}}
       </button>
-      <button mat-menu-item (click)="changeLanguage('pl')">
-        <span>Polski</span>
+      <button mat-raised-button class="nav-button" routerLink="/login" routerLinkActive="active">
+        {{'login' | translate}}
       </button>
-    </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+      <button mat-raised-button class="nav-button" routerLink="/register" routerLinkActive="active">
+        {{'register' | translate}}
+      </button>
+      <button mat-raised-button class="nav-button" [matMenuTriggerFor]="languageMenu">
+        {{currentLang | uppercase}}
+      </button>
 
+      <span class="spacer"></span>
 
-<!--<header>-->
-  <!--<nav>-->
-    <!--<div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">-->
-      <!--<div fxFlex="20">-->
-        <!--<a mat-raised-button routerLink="/home">-->
-          <!--{{'home' | translate | uppercase}}-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<div fxFlex="20">-->
-        <!--<a mat-raised-button routerLink="/events">-->
-          <!--{{'events' | translate | uppercase}}-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<div fxFlex class="text-right">-->
-        <!--<button mat-icon-button [matMenuTriggerFor]="matmenu">-->
-          <!--<mat-icon>public</mat-icon>-->
-        <!--</button>-->
-        <!--<mat-menu #matmenu="matMenu">-->
-          <!--<button mat-menu-item (click)="changeLanguage('en')">-->
-            <!--<mat-icon>flag</mat-icon>-->
-            <!--<span>-->
-                <!--English-->
-            <!--</span>-->
-          <!--</button>-->
-          <!--<button mat-menu-item (click)="changeLanguage('sk')">-->
-            <!--<mat-icon>flag</mat-icon>-->
-            <!--<span>-->
-                <!--Slovensky-->
-            <!--</span>-->
-          <!--</button>-->
-          <!--<button mat-menu-item (click)="changeLanguage('pl')">-->
-            <!--<mat-icon>flag</mat-icon>-->
-            <!--<span>-->
-                <!--Polski-->
-            <!--</span>-->
-          <!--</button>-->
-        <!--</mat-menu>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</nav>-->
-<!--</header>-->
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item (click)="changeLanguage('en')">
+          <span>English</span>
+        </button>
+        <button mat-menu-item (click)="changeLanguage('sk')">
+          <span>Slovensky</span>
+        </button>
+        <button mat-menu-item (click)="changeLanguage('pl')">
+          <span>Polski</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
