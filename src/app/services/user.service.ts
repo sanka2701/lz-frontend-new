@@ -18,7 +18,6 @@ export class UserService {
 
   constructor (
     private apiService: ApiService,
-    private http: HttpClient,
     private jwtService: JwtService
   ) {}
 
@@ -26,7 +25,10 @@ export class UserService {
     if (this.jwtService.getToken()) {
       this.apiService.get('/user')
         .subscribe(
-          data => this.setAuth(data.user),
+          data => {
+            console.log('poulate Received: ', data);
+            this.setAuth(data.user)
+          },
           err => this.purgeAuth()
         );
     } else {
@@ -46,9 +48,9 @@ export class UserService {
     this.isAuthenticatedSubject.next(false);
   }
 
-  attemptAuth(type, credentials): Observable<User> {
-    const route = (type === 'login') ? '/login' : '';
-    return this.apiService.post('/users' + route, {user: credentials})
+  attemptAuth(isLogin: boolean, payload: User): Observable<User> {
+    const route = isLogin ? '/login' : '';
+    return this.apiService.post('/users' + route, payload)
       .pipe(map(
         data => {
           this.setAuth(data.user);

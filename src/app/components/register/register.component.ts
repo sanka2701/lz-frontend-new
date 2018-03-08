@@ -39,8 +39,28 @@ export class RegisterComponent {
     });
   }
 
-  submitForm(newUser: User) {
-    console.log('Passed in user', newUser);
+  submitForm(regFormValue: any) {
+    console.log('Passed in form value', regFormValue);
+
+    const user: User = new User();
+    user.email = regFormValue.email;
+    user.username = regFormValue.username;
+    user.password = regFormValue.passwords.password;
+
+
+    console.log('Passed in user', user);
+
+    this.userService
+      .attemptAuth(false, user)
+      .subscribe(
+        data => this.router.navigateByUrl('/home'),
+        err => {
+          console.log('Registration failed with: ', err);
+          this.errors = err;
+          this.isSubmitting = false;
+        }
+      );
+
     // this.isSubmitting = true;
     // this.errors = {errors: {}};
     //

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
+import {User} from '../../models/user.model';
+import {UserService} from '../../services/user.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,9 +10,26 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class NavBarComponent {
   currentLang: string;
+  currentUser: User;
 
-  constructor(private translateService: TranslateService) {
+  constructor(
+    private userService: UserService,
+    private translateService: TranslateService
+  ) {
+    this.userService.currentUser
+      .subscribe(
+        userData => this.currentUser = userData
+      );
     this.currentLang = this.translateService.currentLang;
+  }
+
+  getUser() {
+    console.log(this.currentUser);
+  }
+
+  logout() {
+    this.userService.purgeAuth();
+    this.getUser();
   }
 
   changeLanguage(language: string): void {

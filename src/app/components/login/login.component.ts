@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService
   ) {
@@ -23,6 +25,13 @@ export class LoginComponent {
 
   attemptLogin(credentials) {
     console.log('Credentials', credentials);
-    // this.userService.attemptAuth(credentials);
+    this.userService
+      .attemptAuth(true, credentials)
+      .subscribe(
+        data => this.router.navigateByUrl('/home'),
+        err => {
+          console.log('Login failed with: ', err);
+        }
+    );
   }
 }

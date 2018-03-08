@@ -6,6 +6,7 @@
   "password" : "Password",
   "confirmPassword" : "Confirm Password",
   "login" : "Login",
+  "logout" : "Logout",
   "register" : "Register",
   "fieldRequired" : "This field is mandatory",
   "passwordMismatch" : "Passwords do not match",

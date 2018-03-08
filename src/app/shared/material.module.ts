@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {MatButtonModule, MatDatepickerModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatDatepickerModule, MatIconRegistry, MatTabsModule} from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
@@ -25,8 +25,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule,
-    MatDatepickerModule
+    // MatIconRegistry,
+    MatMenuModule
   ],
   exports: [
     MatButtonModule,
@@ -39,8 +39,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule,
-    MatDatepickerModule
+    // MatIconRegistry,
+    MatMenuModule
+  ],
+  providers: [
+    MatIconRegistry
   ],
   declarations: []
 })
