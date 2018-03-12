@@ -19,6 +19,9 @@ import {HttpTokenInterceptor} from './shared/interceptors/http.token.interceptor
 import {JwtService} from './services/jwt.service';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { LoginComponent } from './components/login/login.component';
+import { EventCreatorComponent } from './components/event-creator/event-creator.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -26,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'events', component: EventTopComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'create', component: EventCreatorComponent}
 ];
 
 @NgModule({
@@ -35,7 +39,8 @@ const appRoutes: Routes = [
     HomeComponent,
     EventTopComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    EventCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,10 @@ const appRoutes: Routes = [
     ApiService,
     UserService,
     JwtService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ],
   bootstrap: [AppComponent]
 })

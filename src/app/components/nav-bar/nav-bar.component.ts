@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 import {TranslateService} from '@ngx-translate/core';
+import {DateAdapter} from '@angular/material';
+import {Constants} from '../../utils/Constants';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,12 +16,14 @@ export class NavBarComponent {
 
   constructor(
     private userService: UserService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private dateAdapter: DateAdapter<any>
   ) {
-    this.userService.currentUser
-      .subscribe(
-        userData => this.currentUser = userData
-      );
+    this. currentUser = {username: 'Sanka'} as User;
+    // this.userService.currentUser
+    //   .subscribe(
+    //     userData => this.currentUser = userData
+    //   );
     this.currentLang = this.translateService.currentLang;
   }
 
@@ -35,5 +39,6 @@ export class NavBarComponent {
   changeLanguage(language: string): void {
     this.translateService.use(language);
     this.currentLang = language;
+    this.dateAdapter.setLocale(Constants.LOCALE_MAP[language]);
   }
 }

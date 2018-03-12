@@ -13,13 +13,10 @@ export class AppComponent implements OnInit {
   @HostBinding('class') componentCssClass;
 
   constructor(
-    public matIconRegistry: MatIconRegistry,
     private userService: UserService,
     private translateService: TranslateService,
     private overlayContainer: OverlayContainer
   ) {
-    // todo - consider using mat-icon - not exactly necessary
-    this.matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
     this.translateService = translateService;
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');

@@ -10,11 +10,13 @@
 @import "./app/components/register/register.component.scss-theme";
 @import "./app/components/login/login.component.scss-theme";
 @import "./app/components/nav-bar/nav-bar.component.scss-theme";
+@import "./app/components/event-creator/event-creator.component.scss-theme";
 
 @mixin custom-components-theme($theme) {
   @include anms-register-component-theme($theme);
   @include anms-nav-bar-component-theme($theme);
   @include anms-login-component-theme($theme);
+  @include anms-event-creator-component-theme($theme);
 }
 
 .black-theme {

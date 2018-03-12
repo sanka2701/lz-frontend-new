@@ -11,5 +11,12 @@
   "fieldRequired" : "This field is mandatory",
   "passwordMismatch" : "Passwords do not match",
   "emailFormatRequired" : "Email format is required: example@gmail.com",
-  "usernameTaken" : "This username is already taken"
+  "usernameTaken" : "This username is already taken",
+  "createEvent" : "Create Event",
+  "eventTitle" : "Event Title",
+  "startDate" : "Start Date",
+  "endDate" : "End Date",
+  "startTime" : "Start Time",
+  "endTime" : "End Time",
+  "create" : "Create"
 }

@@ -1,7 +1,7 @@
 <div class="fixed-header">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <div fxFlex="40">
+      <div fxFlex="30%">
         <button mat-raised-button class="nav-button" routerLink="/home" routerLinkActive="active">
           {{'home' | translate}}
         </button>
@@ -12,48 +12,54 @@
 
       <span class="spacer"></span>
 
-      <div fxFlex="20">
-        <div *ngIf="!currentUser.username">
-          <button mat-raised-button class="nav-button" routerLink="/login" routerLinkActive="active">
-            <mat-icon fontSet="fa" fontIcon="fa-sign-in"></mat-icon>
-            {{'login' | translate}}
-          </button>
-          <button mat-raised-button class="nav-button" routerLink="/register" routerLinkActive="active">
-            <mat-icon fontSet="fa" fontIcon="fa-user-plus"></mat-icon>
-            {{'register' | translate}}
-          </button>
-        </div>
-        <div *ngIf="currentUser.username">
-          <span>
-            <mat-icon fontSet="fa" fontIcon="fa-user-circle-o"></mat-icon>
-            {{currentUser.username}}
-          </span>
-          <button mat-raised-button class="nav-button" (click)="logout()">
-            <!--<mat-icon fontSet="fa" fontIcon="fa-sign-out"></mat-icon>-->
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            {{'logout' | translate}}
-          </button>
-        </div>
+      <div fxFlex="30%" *ngIf="!currentUser.username">
+        <button mat-raised-button class="nav-button" routerLink="/login" routerLinkActive="active">
+          <i class="fa fa-sign-in"></i>
+          {{'login' | translate}}
+        </button>
+        <button mat-raised-button class="nav-button" routerLink="/register" routerLinkActive="active">
+          <i class="fa fa-user-plus"></i>
+          {{'register' | translate}}
+        </button>
       </div>
 
-      <div fxFlex="10">
+      <div fxFlex="30%" *ngIf="currentUser.username">
+        <span class="nav-button" [matMenuTriggerFor]="userMenu">
+          <i class="fa fa-user-circle-o"></i>
+          {{currentUser.username}}
+        </span>
+        <button mat-raised-button class="nav-button" (click)="logout()">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          {{'logout' | translate}}
+        </button>
+      </div>
+
+      <div fxFlex="15%">
         <button mat-raised-button class="nav-button" [matMenuTriggerFor]="languageMenu">
           {{currentLang | uppercase}}
         </button>
-        <mat-menu #languageMenu="matMenu">
-          <button mat-menu-item (click)="changeLanguage('en')">
-            <span>English</span>
-          </button>
-          <button mat-menu-item (click)="changeLanguage('sk')">
-            <span>Slovensky</span>
-          </button>
-          <button mat-menu-item (click)="changeLanguage('pl')">
-            <span>Polski</span>
-          </button>
-        </mat-menu>
       </div>
+
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/create" routerLinkActive="active">
+          {{ 'createEvent' | translate}}
+        </button>
+      </mat-menu>
+
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item (click)="changeLanguage('en')">
+          <span>English</span>
+        </button>
+        <button mat-menu-item (click)="changeLanguage('sk')">
+          <span>Slovensky</span>
+        </button>
+        <button mat-menu-item (click)="changeLanguage('pl')">
+          <span>Polski</span>
+        </button>
+      </mat-menu>
+
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
 
-{{ currentUser }}
+AHOJ {{ currentUser.username }}
