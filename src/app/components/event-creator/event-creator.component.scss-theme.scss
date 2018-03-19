@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin anms-event-creator-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  app-event-creator {
+    .login-box {
+      background-color: mat-color($background, card);;
+    }
+  }
+}

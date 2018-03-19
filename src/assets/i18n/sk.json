@@ -1,14 +1,25 @@
 {
   "home": "Domov",
+  "article": "Článok",
+  "event": "Udalosť",
   "events": "Udalosti",
   "email" : "Email",
   "username" : "Užívateľské meno",
   "password" : "Heslo",
   "confirmPassword" : "Potvrdenie hesla",
   "login" : "Prihlásiť",
+  "logout" : "Odhlásiť",
   "register" : "Registrovať",
   "fieldRequired" : "Toto pole je povinné",
   "passwordMismatch" : "Heslá sa nezhodujú",
   "emailFormatRequired" : "Vyžaduje sa emailový formát: example@gmail.com",
-  "usernameTaken" : "Toto užívateľské meno sa už používa"
+  "usernameTaken" : "Toto užívateľské meno sa už používa",
+  "createEvent" : "Vytvoriť Udalosť",
+  "eventTitle" : "Názov Udalosti",
+  "startDate" : "Dátum začiatku",
+  "endDate" : "Dátum konca",
+  "startTime" : "Čas začiatku",
+  "endTime" : "Čas konca",
+  "create" : "Vytvoriť",
+  "modeSelect" : "Zvol mód"
 }

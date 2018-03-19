@@ -19,7 +19,7 @@ export class NavBarComponent {
     private translateService: TranslateService,
     private dateAdapter: DateAdapter<any>
   ) {
-    this. currentUser = {username: 'Sanka'} as User;
+    this. currentUser = {username: 'Sanka', role: 'ADMIN'} as User;
     // this.userService.currentUser
     //   .subscribe(
     //     userData => this.currentUser = userData

@@ -1,0 +1,96 @@
+<form class="login-box" fxLayout="column" [formGroup]="registerForm" (ngSubmit)="createEvent(registerForm.value)">
+  <div *ngIf="hasRole('ADMIN')">
+    <mat-form-field fxFlex>
+      <mat-select placeholder="{{ 'modeSelect' | translate}}" [(value)]="currentMode">
+        <mat-option *ngFor="let mode of modes" [value]="mode.value">
+          {{ mode.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field fxFlex>
+      <input matInput
+             type="text"
+             placeholder="{{ 'eventTitle' | translate }}"
+             formControlName="eventTitle"
+             required>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="20px" *ngIf="currentMode === 'event'">
+    <mat-form-field fxFlex>
+      <input matInput
+             [matDatepicker]="startDatePicker"
+             placeholder="{{ 'startDate' | translate }}"
+             formControlName="startDateDummy"
+             required>
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput
+             [matDatepicker]="endDatePicker"
+             placeholder="{{ 'endDate' | translate }}"
+             formControlName="endDateDummy"
+             required>
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="20px" *ngIf="currentMode === 'event'">
+    <mat-form-field fxFlex>
+      <input matInput
+             type="time"
+             placeholder="{{ 'startTime' | translate }}"
+             formControlName="startTime"
+             required>
+    </mat-form-field>
+
+    <mat-form-field fxFlex>
+      <input matInput
+             type="time"
+             placeholder="{{ 'endTime' | translate }}"
+             formControlName="endTime"
+             required>
+    </mat-form-field>
+  </div>
+
+  <div class="vspace"></div>
+
+  <textarea class="editor" name="content" #ckEditor formControlName="postContent">
+      <p>Here goes the initial content of the editor.</p>
+  </textarea>
+
+  <div class="vspace"></div>
+
+  <div fxLayout="row" fxLayoutGap="20px">
+    <label fxFlex
+           type="button"
+           for="file-upload"
+           class="mat-button mat-raised-button mat-primary">
+      Select Files
+    </label>
+    <input id="file-upload" type="file" multiple (change)="selectFiles($event)"/>
+
+    <button fxFlex
+            mat-raised-button
+            color="accent"
+            type="button"
+            (click)="uploadSelectedFiles()">
+      Upload Files
+    </button>
+  </div>
+
+  <div class="vspace"></div>
+
+  <button mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!registerForm.valid">
+    {{'create' | translate}}
+  </button>
+</form>

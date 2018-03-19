@@ -1,5 +1,7 @@
 {
   "home": "Home",
+  "article": "Article",
+  "event": "Event",
   "events": "Events",
   "email" : "Email",
   "username" : "Username",
@@ -18,5 +20,6 @@
   "endDate" : "End Date",
   "startTime" : "Start Time",
   "endTime" : "End Time",
-  "create" : "Create"
+  "create" : "Create",
+  "modeSelect" : "Select creation mode"
 }

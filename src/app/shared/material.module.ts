@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {MatButtonModule, MatDatepickerModule, MatIconRegistry, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatDatepickerModule, MatIconRegistry, MatSelectModule, MatTabsModule} from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
@@ -26,7 +26,8 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     MatToolbarModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -40,7 +41,8 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     MatToolbarModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   providers: [
     MatIconRegistry
