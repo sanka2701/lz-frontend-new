@@ -9,18 +9,32 @@ export class HttpTokenInterceptor implements HttpInterceptor {
   constructor(private jwtService: JwtService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const headersConfig = {
+    let headersConfig = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     };
 
-    const token = this.jwtService.getToken();
+    let request;
 
-    if (token) {
-      headersConfig['Authorization'] = `Token ${token}`;
+    if (req.body instanceof FormData) {
+      // todo kind of works - keep request untouched when posting files
+      let tmp = req.body.get('file');
+      if (tmp) {
+        headersConfig['Content-Type'] = 'multipart/form-data; boundary=???';
+      }
+
+      request = req.clone();
+
+    } else {
+      const token = this.jwtService.getToken();
+
+      if (token) {
+        headersConfig['Authorization'] = `Token ${token}`;
+      }
+
+      request = req.clone({ setHeaders: headersConfig });
     }
 
-    const request = req.clone({ setHeaders: headersConfig });
     return next.handle(request);
   }
 }

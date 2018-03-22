@@ -5,6 +5,9 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/user.model';
 import {TranslateService} from '@ngx-translate/core';
+import {ApiService} from '../../services/api.service';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-event-creator',
@@ -50,6 +53,7 @@ export class EventCreatorComponent implements AfterViewInit {
   }
 
   constructor(
+    private apiService: ApiService,
     private translateService: TranslateService,
     private userService: UserService,
     private formBuilder: FormBuilder
@@ -77,7 +81,7 @@ export class EventCreatorComponent implements AfterViewInit {
     });
 
     this.userService.currentUser.subscribe((user) => {
-      this.currentUser = {username: 'Sanka', role: 'ADMIN'} as User; //user;
+      this.currentUser = user;
     });
 
     translateService.get('event').subscribe((translation) => {
@@ -101,8 +105,42 @@ export class EventCreatorComponent implements AfterViewInit {
     console.log('Created event:', this.selectedFiles);
   }
 
+  onMouseOver(): void {
+    console.log('Mouse is over');
+  }
+
+  onMouseOut(): void {
+    console.log('Mouse is out');
+  }
+
+  // todo test only
+  progress: { percentage: number } = { percentage: 0 };
+  imgurl = 'http://localhost:8080/files/show/tot.jpg';
+
+  imgUrls = [
+    'http://localhost:8080/files/show/tot.jpg',
+    'http://localhost:8080/files/show/wup.jpg'
+  ];
+
   uploadSelectedFiles(): void {
     console.log('Attempting upload');
+
+    // todo refactor, testing only
+
+    this.progress.percentage = 0;
+    let currentFileUpload = this.selectedFiles.item(0);
+
+    this.apiService.upload(currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        console.log('Uploaded file: ' + currentFileUpload + ' percentage: ' + this.progress.percentage);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+        this.imgurl = environment.api_url + event.body;
+      }
+    });
+
+    this.selectedFiles = undefined;
   }
 
   changeLanguage(): void {

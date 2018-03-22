@@ -94,3 +94,18 @@
     {{'create' | translate}}
   </button>
 </form>
+
+<div fxLayout="row" fxLayoutGap="20px">
+  <div *ngFor="let url of imgUrls; let i = index"
+       class="uploadImgContainer"
+       fxFlex
+       (mouseover)="mouserOverIndex=i"
+       (mouseout)="mouserOverIndex=false">
+    <img src="{{url}}">
+    <div *ngIf="mouserOverIndex === i"
+         class="imgMenu"
+         fxFlex>
+      nazdar {{ i }}
+    </div>
+  </div>
+</div>

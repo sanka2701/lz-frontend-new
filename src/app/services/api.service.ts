@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest, HttpParams} from '@angular/common/http';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
@@ -13,6 +13,18 @@ export class ApiService {
 
   private formatErrors(errorResponse: any) {
     return new ErrorObservable(errorResponse.error);
+  }
+
+  upload(payload: any): Observable<HttpEvent<{}>> {
+    const formData: FormData = new FormData();
+    formData.append('file', payload);
+
+    const req = new HttpRequest('POST', environment.api_url + '/files/upload', formData, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
